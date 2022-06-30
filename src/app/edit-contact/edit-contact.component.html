@@ -1,0 +1,51 @@
+<div class="containers mg-4">
+    <div class="row">
+        <div class="col mt-2">
+            <p class="h3 fw-bold text-primary"><i class="fa fa-pen"> &nbsp;</i>Edit contact</p>
+            
+        </div>
+    </div>
+</div>
+
+<!----------------------Edit contact form-------------------------->
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-sm-4">
+            <form  (submit)="submitUpdate()">
+                <div class="mb-2">
+                    <input [(ngModel)]="contact.Name" [value]="contact.Name" name="name" type="text" class="form-control" placeholder="Name">
+                </div>
+                <div class="mb-2">
+                    <input [(ngModel)]="contact.photo" [value]="contact.photo" name="photo" type="text" class="form-control" placeholder="Photo url">
+                </div>
+                <div class="mb-2">
+                    <input [(ngModel)]="contact.Email" [value]="contact.Email" name="Email"type="text" class="form-control" placeholder="Email Id">
+                </div>
+                <div class="mb-2">
+                    <input [(ngModel)]="contact.mobile" [value]="contact.mobile" name="mobile" type="number" class="form-control" placeholder="Mobile No">
+                </div>
+                <div class="mb-2">
+                    <input [(ngModel)]="contact.company" [value]="contact.company" name="company" type="text" class="form-control" placeholder="Company">
+                </div>
+                <div class="mb-2">
+                    <input [(ngModel)]="contact.title" [value]="contact.title" name="title"type="text" class="form-control" placeholder="Title">
+                </div>
+                <div class="mb-2">
+                    <select [(ngModel)]="contact.groupId" [value]="contact.groupId" name="groupId"class="form-control">
+                        <option value="">select a Group</option>
+                        <option [value]="group.id"  *ngFor="let group of grp">{{group.name}}</option>
+                    </select>
+                </div>
+                <div class="mb-2">
+                    <input type="submit" class="btn btn-primary" value="update">
+                    <a routerLink="/" class="btn btn-warning ms-4">close</a>
+                </div>
+
+
+            </form>
+        </div>
+        <div class="col-sm-4">
+            <img [src]="contact.photo" alt=" " class="contact-img">
+        </div>
+    </div>
+</div>

@@ -1,0 +1,78 @@
+<div class="container mt-4">
+    <div class="row">
+        <div class="col">
+            <p class="h3">My first Contact App
+                <a class="btn btn-success btn-sm" href="/contact/add"><i
+                        class="fa fa-plus-circle">&NonBreakingSpace;</i>Add New </a>
+            </p>
+
+            <form>
+                <div class="row">
+                    <div class=" col-md-6 mt-4">
+                        <input type="text" class="form-control" placeholder="search contact">
+                    </div>
+                    <div class="col-md-6 mt-4">
+                        <input type="submit" class="btn btn-outline-dark " value="search">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- condition based loading -->
+<div *ngIf="loading">
+    <app-spinner></app-spinner>
+</div>
+
+<div *ngIf="!loading && errorMessage">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <p class="h4 text-danger fw-bold">{{errorMessage}}</p>
+            </div>
+        </div>
+    </div>
+</div> 
+
+
+<!--<pre>{{ contacts | json}}</pre> -->
+<!--------------- card design ------------------>
+<div class="container mt-4" *ngIf="!loading && contact.length > 0">
+    <div class="row">
+        <div *ngFor="let contact of contact" class="col-md-6">
+            <div class="card">
+                <div class="card list-group-item-success shadow-lg  my-2">
+                    <div class="card-body">
+                        <div class="row align-item-center">
+                            <div class="col-sm-4">
+                                <img [src]="contact.photo" alt="user" class="contact-img">
+                            </div>
+                            <div class="col-sm-7">
+                                <ul class="list-group">
+                                    <li class="list-group-item">
+                                        <b>Name:</b> <span class="fst-italic"> {{contact.Name}} </span>
+                                    </li>
+                                    <li class="list-group-item ">
+                                        <b>Email</b>:<span class="fst-italic"> {{contact.Email}} </span>
+                                    </li>
+                                    <li class="list-group-item ">
+                                        <b> Mobile </b>:<span class=" fst-italic">{{contact.mobile}} </span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-1 d-flex flex-column justify-content-center align-items-center">
+                                <a routerLink="/contact/view/{{contact.id}}" class="btn btn-warning"><i class="fa fa-eye">
+                                    </i></a>
+                                <a routerLink="/contact/edit/{{contact.id}}" class="btn btn-success mt-1"><i
+                                        class="fa fa-pen ">
+                                    </i></a>
+
+                                <button class="btn btn-danger mt-1"(click)="deleteContact(contact.id)"><i class="fa fa-trash"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>

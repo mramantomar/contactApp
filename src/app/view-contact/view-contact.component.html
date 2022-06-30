@@ -1,0 +1,57 @@
+<div class="containers mg-4">
+    <div class="row">
+        <div class="col mt-2">
+            <p class="h3 fw-bold text-primary"><i class="fa fa-eye"> &nbsp;</i> view contact</p>
+        </div>
+    </div>
+</div>
+<!-- condition based loading -->
+<div *ngIf="loading">
+    <app-spinner></app-spinner>
+</div>
+
+<div *ngIf="!loading && errorMessage">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <p class="h4 text-danger fw-bold">{{errorMessage}}</p>
+            </div>
+        </div>
+    </div>
+</div> 
+<!-----------view contacts details------------------->
+<div *ngIf="!loading && isNotEmpty" class="container">
+    <div class="row align-items-center">
+        <div class="col-sm-4">
+            <img [src]="contact.photo" alt=" " class="contact-img-detail">
+        </div>
+        <div class="col-sm-6">
+            <ul class="list-group">
+                <li class="list-group-item list-group-item-success">
+                    <b >Name:</b> <span > {{contact.Name}} </span>
+                </li>
+                <li class="list-group-item list-group-item-success">
+                    <b>Email</b>:<span> {{contact.Email}} </span>
+                </li>
+                <li class="list-group-item list-group-item-success ">
+                    <b> Mobile </b>:<span> {{contact.mobile}}</span>
+                </li>
+                <li class="list-group-item list-group-item-success">
+                    <b> company </b>:<span>{{contact.company}} </span>
+                </li>
+                <li class="list-group-item list-group-item-success">
+                    <b> Title </b>:<span> {{contact.title}}</span>
+                </li>
+                <li class="list-group-item list-group-item-success">
+                    <b> Group Id</b>:<span> {{group.name}}</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+        <div class="row mt-2">
+        <div class="col">
+            <a routerLink="/" class="btn btn-warning"><i class="fa fa-arrow-alt-circle-left">&nbsp;</i>Go back</a>
+
+        </div>
+    </div>
+</div>
